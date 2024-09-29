@@ -1,0 +1,99 @@
+/* Carousel image styling */
+.carousel-img {
+    height: 725px;
+    object-fit: cover;
+    opacity: 0.9; /* Slight transparency to emphasize text */
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, 1); /* Add a subtle top shadow */
+}
+
+
+/* Centering the caption content (headings, subheadings, and button) */
+.carousel-caption-custom {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    opacity: 1; /* Ensure full visibility of the text */
+    z-index: 5; /* Ensure it stays on top */
+}
+
+/* Subheading (h4) styling */
+.custom-subheading {
+    font-family: 'Bradley Hand', cursive;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #000000; /* Light color for subheading */
+}
+
+/* Main heading (h3) styling */
+.custom-main-heading {
+    font-family: 'Bradley Hand', cursive;
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000000; /* Ensure full contrast with the background */
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Custom button styling */
+.custom-btn {
+    padding: 12px 30px;
+    font-size: 20px;
+    background-color: #063911; /* Solid green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    opacity: 1;
+    z-index: 10; /* Ensure button stays on top */
+}
+
+.custom-btn:hover {
+    background-color: #144e21; /* Darker green on hover */
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* For overriding possible navbar button styles */
+.navbar .custom-btn {
+    background-color: initial;
+}
+
+/* Ensure other buttons (like navbar ones) are not affected */
+.navbar-btn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Style the carousel indicators to appear as small dots */
+.carousel-indicators {
+    bottom: 10px; /* Adjust vertical position */
+}
+
+.carousel-indicators li {
+    background-color: #000; /* Color of the dots */
+    width: 10px; /* Width of dots */
+    height: 10px; /* Height of dots */
+    border-radius: 50%; /* Make them circular */
+    opacity: 0.6; /* Slight transparency */
+}
+
+.carousel-indicators .active {
+    background-color: #063911; /* Active dot color */
+    opacity: 1; /* Full visibility for active dot */
+}
+
+/* Add hover effect for better user experience */
+.carousel-indicators li:hover {
+    opacity: 1; /* Fully visible on hover */
+}

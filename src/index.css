@@ -1,0 +1,14 @@
+/* src/styles/App.css or any relevant CSS file */
+* {
+  font-family: 'Space Grotesk', sans-serif; /* Default font for all elements */
+}
+
+h1, h2{
+  font-family: 'Bradley Hand', cursive; /* Apply Bradley Hand to headers and paragraphs */
+}
+
+h3, h4, h5, h6, p {
+  font-family: 'Space Grotesk', sans-serif; /* Default font for all elements */
+}
+
+/* You can also add specific styles for other elements if needed */

@@ -1,0 +1,67 @@
+.introduction-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Replace with your desired font */
+  }
+  
+  .content {
+    flex: 1;
+    margin-left: 2.5rem;
+    max-width: 50%; /* Adjust as needed */
+    padding: 20px;
+    background-color: #ffffff; /* White background for better readability */
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 30px;
+    color: #2c3e50; /* Darker color for headings */
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    color: #2c3e50; /* Darker color for headings */
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #34495e; /* Dark gray for paragraph text */
+    line-height: 1.6; /* Improved line spacing */
+  }
+  
+  ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  .image-container {
+    flex: 1;
+    position: relative; /* Position for the background box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .green-background {
+    position: absolute;
+    background-color: #093a15; /* Green color */
+    width: 65%;
+    height: 90%;
+    top: 10%;
+    left: 15%;
+    z-index: 1; /* Behind the image */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  .image-container img {
+    max-width: 60%; /* Responsive */
+    height: 50%;
+    position: relative;
+    z-index: 2; /* Above the green box */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  

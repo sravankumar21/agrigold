@@ -1,0 +1,107 @@
+.our-products-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.section-heading-of-assurance {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.assurance-icons {
+    margin-bottom: 40px;
+}
+
+.assurance-item {
+    margin: 20px 0;
+}
+
+.assurance-icon {
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.products-heading-display {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.products-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Hide overflow for smooth sliding */
+}
+
+/* .products-list { */
+    /* display: flex; */
+    /* transition: transform 0.3s ease; Smooth transition for slide effect */
+    /* width: 92%; Full width */
+    /* margin-top: 35px;
+} */
+
+.products-list {
+    display: flex;
+    transition: transform 0.3s ease;
+    width: calc(100% - 20px); /* Adjusted width to account for arrow spaces */
+    margin: 0 20px; /* Added margin on both sides to balance arrows */
+    margin-top: 1.5rem;
+}
+
+.product-item {
+    margin: 0 5px; /* Reduced gap between product items */
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    width: calc(100% / 4); /* Width for 4 products */
+}
+
+.circle-image-container {
+    width: 120px; /* Circle width */
+    height: 120px; /* Circle height */
+    border-radius: 50%; /* Creates the circle */
+    overflow: hidden; /* Ensures image fits within circle */
+    display: inline-block; /* Centering */
+    margin-bottom: 10px; /* Space between image and text */
+}
+
+.product-button {
+    border: none; /* Remove border */
+    background-color: transparent; /* No background */
+    cursor: pointer; /* Pointer on hover */
+    padding: 0; /* Remove padding */
+}
+
+.product-image {
+    width: 100%; /* Adjust the image to fill the circle */
+    height: auto;
+    display: block; /* Remove space below image */
+}
+
+.slider-arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem; /* Adjust the arrow size */
+    color: #333; /* Arrow color */
+    margin: 0 10px; /* Space around arrows */
+    z-index: 1; /* Ensure arrows are above products */
+}
+
+.left-arrow {
+    position: absolute;
+    left: 2rem; /* Adjust as needed to balance spacing */
+}
+
+.right-arrow {
+    position: absolute;
+    right: -1rem; /* Adjust as needed to balance spacing */
+}
+
+.slider-arrow:disabled {
+    color: lightgray; /* Color for disabled state */
+    cursor: not-allowed; /* Change cursor */
+}
