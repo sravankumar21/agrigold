@@ -1,0 +1,71 @@
+/* Background image section with reduced transparency */
+.tools-banner {
+    position: relative;
+    background-image: url('../images/homewallpaper.jpg'); /* Replace with your banner image */
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8; /* Reduce transparency */
+}
+
+.tools-heading {
+    color: white;
+    font-size: 3rem;
+    /* font-family: 'Space Grotesk', sans-serif; */
+    font-family: 'Bradley Hand', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Breadcrumb navigation */
+.breadcrumb-container {
+    margin: 20px;
+    font-size: 1rem;
+}
+
+.breadcrumb-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb-container span {
+    color: #555;
+}
+
+.tools-description {
+    margin: 0px auto; /* Adjust to center the paragraph horizontally */
+    font-size: 1.2rem;
+    color: #333;
+    text-align: justify; /* This aligns the text to both the left and right edges */
+    width: 80%; /* You can adjust the width to make sure it fits the layout */
+    line-height: 1.6; /* Improves readability with proper line spacing */
+    margin-bottom: 20px;
+}
+
+
+/* Tools card grid */
+.tool-card-col {
+    margin-bottom: 20px;
+}
+
+.tool-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: scale(1.05); /* Add a zoom effect on hover */
+}
+
+.tool-card-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.tool-card .card-title {
+    font-size: 1.1rem;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+}

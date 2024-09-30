@@ -3,31 +3,20 @@
     text-align: center;
 }
 
-.section-heading-of-assurance {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-.assurance-icons {
-    margin-bottom: 40px;
-}
-
-.assurance-item {
-    margin: 20px 0;
-}
-
-.assurance-icon {
-    width: 50px; /* Adjust size as needed */
-    height: auto;
-    margin-bottom: 10px;
-}
-
 .products-heading-display {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 2rem;
     margin-top: 30px;
     margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.arrows-container {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .products-slider {
@@ -35,73 +24,61 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden; /* Hide overflow for smooth sliding */
+    overflow: hidden;
+    margin-top: 2rem;
 }
 
-/* .products-list { */
-    /* display: flex; */
-    /* transition: transform 0.3s ease; Smooth transition for slide effect */
-    /* width: 92%; Full width */
-    /* margin-top: 35px;
-} */
-
 .products-list {
-    display: flex;
+    display: flex; 
     transition: transform 0.3s ease;
-    width: calc(100% - 20px); /* Adjusted width to account for arrow spaces */
-    margin: 0 20px; /* Added margin on both sides to balance arrows */
-    margin-top: 1.5rem;
+    width: calc(110%); /* Ensure full width */
+    margin: 0; /* Remove left margin to align items */
 }
 
 .product-item {
-    margin: 0 5px; /* Reduced gap between product items */
-    flex: 0 0 auto; /* Prevent flex items from shrinking */
-    width: calc(100% / 4); /* Width for 4 products */
+    margin: 0 10px; /* Set horizontal gap */
+    flex: 0 0 auto; /* Ensures items don't shrink */
+    width: calc(100% / 3.3); /* Adjust this based on how many items to show */
 }
 
-.circle-image-container {
-    width: 120px; /* Circle width */
-    height: 120px; /* Circle height */
-    border-radius: 50%; /* Creates the circle */
-    overflow: hidden; /* Ensures image fits within circle */
-    display: inline-block; /* Centering */
-    margin-bottom: 10px; /* Space between image and text */
-}
-
-.product-button {
-    border: none; /* Remove border */
-    background-color: transparent; /* No background */
-    cursor: pointer; /* Pointer on hover */
-    padding: 0; /* Remove padding */
+.square-image-container {
+    width: 380px; /* Width of product image */
+    height: 200px; /* Height of product image */
+    display: inline-block;
+    position: relative;
+    cursor: pointer; /* Make it clear it's clickable */
 }
 
 .product-image {
-    width: 100%; /* Adjust the image to fill the circle */
-    height: auto;
-    display: block; /* Remove space below image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0; /* Ensure square shape, no rounded corners */
 }
+
+.black-small-div {
+    position: absolute;
+    bottom: 5%; /* Keep text overlay at the bottom */
+    left: 10%; /* Align the div from the left side */
+    background-color: #000; /* Black background */
+    color: white; /* White text color */
+    padding: 5px 10px; /* Padding inside the overlay */
+    text-align: center; /* Center the text within the div */
+    border-radius: 5px; /* Slightly rounded corners */
+    width: auto; /* Ensure width adjusts to the text */
+}
+
 
 .slider-arrow {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 2rem; /* Adjust the arrow size */
-    color: #333; /* Arrow color */
-    margin: 0 10px; /* Space around arrows */
-    z-index: 1; /* Ensure arrows are above products */
-}
-
-.left-arrow {
-    position: absolute;
-    left: 2rem; /* Adjust as needed to balance spacing */
-}
-
-.right-arrow {
-    position: absolute;
-    right: -1rem; /* Adjust as needed to balance spacing */
+    font-size: 2rem;
+    color: #333;
+    margin-left: 5px; /* Gap between arrows */
 }
 
 .slider-arrow:disabled {
-    color: lightgray; /* Color for disabled state */
-    cursor: not-allowed; /* Change cursor */
+    color: lightgray;
+    cursor: not-allowed;
 }
