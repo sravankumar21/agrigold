@@ -1,9 +1,9 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import img1 from '../images/wallpaper3.jpg';
-import img2 from '../images/homewallpaper3.jpg';
-import img3 from '../images/wallpaper3.jpg';
-import img4 from '../images/homewallpaper3.jpg';
+import img1 from '../images/green background.jpg';
+import img2 from '../images/betterworld.jpg';
+import img3 from '../images/green2.jpg';
+import img4 from '../images/paddyimage.jpg';
 import img5 from '../images/wallpaper3.jpg';
 import '../styles/ImageCarousel.css'; // Import your CSS for styling
 

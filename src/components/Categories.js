@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import '../styles/OurProducts.css'; // Ensure the CSS is properly linked
+import '../styles/Categories.css'; // Ensure the CSS is properly linked
 import productImage from '../images/plant image.jpg';
 import wheatimg from '../images/irrigation.avif';
 import animalimg from '../images/animal.avif';
@@ -9,8 +9,9 @@ import tools from '../images/tools.png'; // Replace with your actual product ima
 import agristoreimg from '../images/agristore.jpg';
 import sprayers from '../images/sprayers.jpg';
 import pool from '../images/pool.jpg';
+// import betterWorldImage from '../images/betterworld.jpg'; // Import your image for the new section
 
-const OurProducts = () => {
+const Categories = () => {
     const products = [
         { name: "Tools", image: tools, url: "/tools" },
         { name: "Irrigation", image: wheatimg, url: "/irrigation" },
@@ -68,8 +69,16 @@ const OurProducts = () => {
                     ))}
                 </div>
             </div>
+
+            {/* New section below the slider
+            <div className="better-world-section">
+                <h1 className="test2">Creating a Better World</h1>
+                <div className="image-container">
+                    <img src={betterWorldImage} alt="Better World" className="better-world-image" />
+                </div>
+            </div> */}
         </Container>
     );
 };
 
-export default OurProducts;
+export default Categories;

@@ -2,7 +2,7 @@
 .carousel-img {
     height: 725px;
     object-fit: cover;
-    opacity: 0.9; /* Slight transparency to emphasize text */
+    opacity: 1; /* Slight transparency to emphasize text */
     box-shadow: 0 -10px 15px rgba(0, 0, 0, 1); /* Add a subtle top shadow */
 }
 
@@ -13,26 +13,24 @@
     top: 30%;
     left: 50%;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     opacity: 1; /* Ensure full visibility of the text */
     z-index: 5; /* Ensure it stays on top */
 }
 
 /* Subheading (h4) styling */
 .custom-subheading {
-    font-family: 'Bradley Hand', cursive;
     font-size: 30px;
     margin-bottom: 10px;
-    color: #000000; /* Light color for subheading */
+    color: #ffffff; /* Light color for subheading */
 }
 
 /* Main heading (h3) styling */
 .custom-main-heading {
-    font-family: 'Bradley Hand', cursive;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #000000; /* Ensure full contrast with the background */
+    color: #ffffff; /* Ensure full contrast with the background */
     animation: fadeIn 2s ease-in-out;
 }
 

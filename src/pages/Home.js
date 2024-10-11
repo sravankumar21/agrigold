@@ -2,7 +2,8 @@
 import React from 'react';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
-import OurProducts from '../components/OurProducts';
+import Categories from '../components/Categories';
+import Products from '../components/Products';
 
 
 const Home = () => {
@@ -10,7 +11,8 @@ const Home = () => {
     <div>
       <Header />
       <Navbar />
-      <OurProducts />
+      <Categories />
+      <Products />
 
     </div>
   );

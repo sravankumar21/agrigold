@@ -82,3 +82,28 @@
     color: lightgray;
     cursor: not-allowed;
 }
+
+.better-world-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.test2 {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 5em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.image-container {
+    margin-top: 20px;
+}
+
+.better-world-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+

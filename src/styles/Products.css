@@ -1,0 +1,152 @@
+/* Main section styling */
+.unique-products-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Container for heading and arrows */
+.heading-and-arrows {
+    display: flex;
+    justify-content: space-between;  /* Aligns heading left and arrows right */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Main heading */
+.unique-main-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    text-align: left;
+    margin: 0;  /* Ensure no extra margin */
+    position: relative;
+}
+
+/* Arrows container aligned to the right of the heading */
+.unique-arrows-container {
+    display: flex;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+/* Arrows styling */
+.unique-slider-arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #333;
+    margin-left: 10px;  /* Space between the arrows */
+    transition: color 0.3s ease;
+}
+
+.unique-slider-arrow:hover {
+    color: lightgray;
+}
+
+.unique-slider-arrow:disabled {
+    color: lightgray;
+    cursor: not-allowed;
+}
+
+/* Carousel container with fixed height and dynamic background */
+.unique-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    margin: 0 auto;
+    height: 400px; /* Fixed height */
+    position: relative;
+    background-color: black; /* Black background */
+    background: linear-gradient(45deg, #3cb371, #007f66, #007f5c); /* Gradient green */
+    transition: background-position 0.2s ease-in-out;
+    background-size: 400% 400%; /* Allow for the gradient to move */
+}
+
+/* Left part of the carousel */
+.unique-carousel-left {
+    text-align: left;
+    width: 50%;
+}
+
+/* Subheading for the category */
+.unique-subheading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    margin-top: -90px;
+    color: #fff; /* White text on black background */
+}
+
+/* Buttons container */
+.unique-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Dynamically fit buttons, minimum 120px */
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+/* Stylish buttons */
+.unique-category-button {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.unique-category-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Right part of the carousel */
+.unique-carousel-right {
+    width: 40%;
+    text-align: center;
+}
+
+.unique-category-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    animation: slide-in 0.5s ease;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(5%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Background gradient movement based on cursor */
+.unique-carousel:hover {
+    background-position: center;
+}
+
+.unique-carousel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+    transition: background-position 0.2s;
+}
+
+/* Gradient effect that follows the cursor */
+.unique-carousel:hover::before {
+    background-position: var(--x, 50%) var(--y, 50%);
+}

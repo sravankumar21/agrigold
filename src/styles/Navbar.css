@@ -24,7 +24,7 @@
 .nav-links a {
   color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   position: relative; /* Required for underline effect */
 }
 
@@ -71,7 +71,7 @@
   padding: 10px;
   text-decoration: none;
   color: #333;
-  font-size: 14px;
+  font-size: 18px;
   border-bottom: 1px solid #f0f0f0;
   position: relative;
 }
@@ -109,6 +109,7 @@
   display: flex;
   align-items: center;
   border: none;
+  font-size: 16px;
   background-color: transparent; /* No background */
   cursor: pointer; /* Pointer cursor on hover */
   margin-right: 20px; /* Space between user icon and cart */
@@ -134,7 +135,7 @@
 }
 
 .cart-count {
-  font-size: 14px; /* Adjust font size */
+  font-size: 18px; /* Adjust font size */
   color: rgb(0, 0, 0); /* Text color */
   background-color: #e0e0e0; /* Background for count */
   border-radius: 50%; /* Circular background */

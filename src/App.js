@@ -5,6 +5,7 @@ import Home from './pages/Home'; // Import Home component
 import AgrigoldIntroduction from './components/AgrigoldIntroduction';
 import ToolsPage from './components/ToolsPage';
 import Looper from './tools/Looper';
+// import Chatbot from './components/ChatbotInterface';
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<AgrigoldIntroduction />} /> {/* About Us Page */}
           <Route path="/tools" element={<ToolsPage />} /> {/* About Us Page */}
           <Route path="/tools/looper" element={<Looper />} /> {/* About Us Page */}
+          {/* <Route path="/chatbot" element={<Chatbot />} /> About Us Page */}
         </Routes>
       </div>
     </Router>
