@@ -1,0 +1,99 @@
+/* General Navbar Styles */
+.navbar-two {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #bbd07d; /* Dark Green */
+    color: rgb(0, 0, 0);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo-button-two {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .logo-button-two img {
+    height: 40px; /* Adjust logo size */
+  }
+  
+  .search-bar-two {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px 15px;
+    width: 400px; /* Adjust width */
+  }
+  
+  .search-bar-two input {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    width: 80%;
+    font-size: 16px;
+  }
+  
+  .search-bar-two button {
+    background-color: #007f66;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .search-bar-two button:hover {
+    background-color: #005f44;
+  }
+  
+  /* User and Cart Styles */
+  .user-cart-two {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sign-in-button-two {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .user-icon-two {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+  }
+  
+  .sign-in-button-two span {
+    font-size: 16px;
+  }
+  
+  .cart-button-two {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-icon-two {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  .cart-count-two {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

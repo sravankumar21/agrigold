@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';  // Import Link for routing
 import '../styles/Products.css';
 import seedsImage from '../images/seedimage.jpg';
 import fertilizersImage from '../images/fertilizer.jpg';
@@ -43,10 +44,6 @@ const Products = () => {
         }
     };
 
-    const navigateToPage = (page) => {
-        window.location.href = `/${page.toLowerCase()}`;
-    };
-
     const handleMouseMove = (e) => {
         const carousel = e.currentTarget;
         const { left, top } = carousel.getBoundingClientRect();
@@ -76,9 +73,9 @@ const Products = () => {
 
                     <div className="unique-buttons-container">
                         {currentCategory.buttons.map((button, index) => (
-                            <button key={index} className="unique-category-button" onClick={() => navigateToPage(button)}>
+                            <Link key={index} to={`/${currentCategory.name.toLowerCase()}/${button.toLowerCase()}`} className="unique-category-button">
                                 {button}
-                            </button>
+                            </Link>
                         ))}
                     </div>
                 </div>
