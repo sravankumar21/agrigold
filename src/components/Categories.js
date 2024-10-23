@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
+import Slider from "react-slick"; // Import react-slick
+import "slick-carousel/slick/slick.css"; // Import slick-carousel styles
+import "slick-carousel/slick/slick-theme.css"; // Import slick-carousel theme
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import '../styles/Categories.css'; // Ensure the CSS is properly linked
 import productImage from '../images/plant image.jpg';
 import wheatimg from '../images/irrigation.avif';
 import animalimg from '../images/animal.avif';
-import tools from '../images/tools.png'; // Replace with your actual product image paths
+import tools from '../images/tools.png';
 import agristoreimg from '../images/agristore.jpg';
 import sprayers from '../images/sprayers.jpg';
 import pool from '../images/pool.jpg';
-// import betterWorldImage from '../images/betterworld.jpg'; // Import your image for the new section
 
 const Categories = () => {
     const products = [
@@ -22,19 +24,32 @@ const Categories = () => {
         { name: "Landscape and Pool", image: pool, url: "/landscape-and-pool" },
     ];
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const itemsToShow = 3; // Show 3 products at a time
-
-    const handleNext = () => {
-        if (currentIndex < products.length - itemsToShow) {
-            setCurrentIndex(currentIndex + 1);
-        }
-    };
-
-    const handlePrev = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-        }
+    // Slider settings for different screen sizes with autoplay
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        swipeToSlide: true,
+        autoplay: true, // Enable automatic sliding
+        autoplaySpeed: 3000, // Set the speed for automatic sliding (3000ms = 3 seconds)
+        nextArrow: <FaArrowRight className="slider-arrow right-arrow" />,
+        prevArrow: <FaArrowLeft className="slider-arrow left-arrow" />,
+        responsive: [
+            {
+                breakpoint: 1024, // For tablet devices
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 768, // For mobile devices
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     };
 
     const navigateToProduct = (url) => {
@@ -45,38 +60,20 @@ const Categories = () => {
         <Container className="our-products-section">
             <h3 className="products-heading-display">
                 Shop by Category
-                <div className="arrows-container">
-                    <button className="slider-arrow left-arrow" onClick={handlePrev} disabled={currentIndex === 0}>
-                        <FaArrowLeft />
-                    </button>
-                    <button className="slider-arrow right-arrow" onClick={handleNext} disabled={currentIndex >= products.length - itemsToShow}>
-                        <FaArrowRight />
-                    </button>
-                </div>
             </h3>
 
-            <div className="products-slider">
-                <div className="products-list" style={{ transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)` }}>
-                    {products.map((product, index) => (
-                        <div className="product-item" key={index}>
-                            <div className="square-image-container" onClick={() => navigateToProduct(product.url)}>
-                                <img src={product.image} alt={product.name} className="product-image" />
-                                <div className="black-small-div">
-                                    <span>{product.name}</span>
-                                </div>
+            <Slider {...sliderSettings}>
+                {products.map((product, index) => (
+                    <div className="product-item" key={index}>
+                        <div className="square-image-container" onClick={() => navigateToProduct(product.url)}>
+                            <img src={product.image} alt={product.name} className="product-image" />
+                            <div className="black-small-div">
+                                <span>{product.name}</span>
                             </div>
                         </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* New section below the slider
-            <div className="better-world-section">
-                <h1 className="test2">Creating a Better World</h1>
-                <div className="image-container">
-                    <img src={betterWorldImage} alt="Better World" className="better-world-image" />
-                </div>
-            </div> */}
+                    </div>
+                ))}
+            </Slider>
         </Container>
     );
 };

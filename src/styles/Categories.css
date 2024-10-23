@@ -1,3 +1,4 @@
+/* General Section Styles */
 .our-products-section {
     padding: 40px 0;
     text-align: center;
@@ -12,6 +13,7 @@
     position: relative;
 }
 
+/* Arrow Container */
 .arrows-container {
     display: inline-block;
     position: absolute;
@@ -19,6 +21,7 @@
     right: 10px;
 }
 
+/* Slider Container */
 .products-slider {
     display: flex;
     align-items: center;
@@ -29,65 +32,71 @@
 }
 
 .products-list {
-    display: flex; 
+    display: flex;
     transition: transform 0.3s ease;
     width: calc(110%); /* Ensure full width */
     margin: 0; /* Remove left margin to align items */
 }
 
 .product-item {
-    margin: 0 10px; /* Set horizontal gap */
-    flex: 0 0 auto; /* Ensures items don't shrink */
+    margin: 0 10px; /* Horizontal gap between items */
+    flex: 0 0 auto; /* Ensure items don't shrink */
     width: calc(100% / 3.3); /* Adjust this based on how many items to show */
 }
 
+/* Product Image Container */
 .square-image-container {
     width: 380px; /* Width of product image */
     height: 200px; /* Height of product image */
     display: inline-block;
     position: relative;
-    cursor: pointer; /* Make it clear it's clickable */
+    cursor: pointer; /* Indicates clickability */
 }
 
+/* Product Image Styles */
 .product-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 0; /* Ensure square shape, no rounded corners */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 0; /* Keep the image square, no rounded corners */
 }
 
+/* Text Overlay for Product Name */
 .black-small-div {
     position: absolute;
-    bottom: 5%; /* Keep text overlay at the bottom */
-    left: 10%; /* Align the div from the left side */
-    background-color: #000; /* Black background */
+    bottom: 5%; /* Keep text overlay near the bottom */
+    left: 10%; /* Align the overlay from the left */
+    background-color: #000; /* Black background for contrast */
     color: white; /* White text color */
-    padding: 5px 10px; /* Padding inside the overlay */
+    padding: 5px 10px; /* Padding inside the text overlay */
     text-align: center; /* Center the text within the div */
-    border-radius: 5px; /* Slightly rounded corners */
-    width: auto; /* Ensure width adjusts to the text */
+    border-radius: 5px; /* Rounded corners for overlay */
+    width: auto; /* Ensure the width adjusts to text */
 }
 
-
+/* Slider Arrow Styles */
 .slider-arrow {
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 2rem;
-    color: #333;
-    margin-left: 5px; /* Gap between arrows */
+    color: #333; /* Dark color for the arrows */
+    margin-left: 5px; /* Gap between the arrows */
 }
 
+/* Disabled Arrow Styles */
 .slider-arrow:disabled {
-    color: lightgray;
-    cursor: not-allowed;
+    color: lightgray; /* Light gray for disabled arrows */
+    cursor: not-allowed; /* Indicate it's not clickable */
 }
 
+/* Better World Section */
 .better-world-section {
     text-align: center;
     margin-top: 50px;
 }
 
+/* Better World Section Heading */
 .test2 {
     font-family: "Trebuchet MS", sans-serif;
     font-size: 5em;
@@ -95,15 +104,64 @@
     text-transform: uppercase;
 }
 
+/* Image Container in Better World Section */
 .image-container {
     margin-top: 20px;
 }
 
+/* Better World Image Styling */
 .better-world-image {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners for better visuals */
 }
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .square-image-container {
+        width: 300px; /* Reduce width for tablets */
+        height: 180px;
+    }
 
+    .product-item {
+        width: calc(100% / 2.5); /* Show fewer products on tablet */
+    }
+}
 
+@media (max-width: 768px) {
+    .square-image-container {
+        width: 250px; /* Reduce width for mobile devices */
+        height: 150px;
+    }
+
+    .product-item {
+        width: calc(100% / 1.5); /* Show fewer products on smaller mobile devices */
+    }
+}
+
+@media (max-width: 500px) {
+    .square-image-container {
+        width: 300px; /* Further reduce for very small screens */
+        height: 200px;
+    }
+
+    .product-item {
+        width: calc(100%); /* Show one product at a time on mobile */
+    }
+
+    .products-heading-display {
+        font-size: 1.5rem; /* Smaller font for heading on small screens */
+    }
+
+    .black-small-div {
+        font-size: 12px; /* Smaller text inside the overlay */
+    }
+
+    .slider-arrow {
+        font-size: 1.5rem; /* Reduce the size of arrows for small screens */
+    }
+
+    .better-world-image {
+        border-radius: 5px; /* Slightly smaller radius for small screens */
+    }
+}
