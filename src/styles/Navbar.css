@@ -1,57 +1,89 @@
+/* Navbar */
 .navbar {
   background-color: #ffffff;
-  padding: 10px 0; /* Adjusted padding for better appearance */
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* Ensure navbar has a relative position */
-  z-index: 10; /* Higher z-index */
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
+/* Logo */
 .logo img {
-  height: 80px; /* Set the height for the logo image */
-  margin-left: 80px;
+  height: 60px;
+  margin-left: 20px;
 }
 
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Hamburger Menu for mobile view */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
+
+/* Navigation Links */
 .nav-links {
   display: flex;
   gap: 30px;
-  margin-left: 2.2rem; /* Adjusted to use automatic margin */
-  margin-top: 1rem;
+  margin-right: 20px;
   list-style-type: none;
+}
+
+.nav-links li {
+  position: relative;
 }
 
 .nav-links a {
   color: rgb(0, 0, 0);
   text-decoration: none;
   font-size: 18px;
-  position: relative; /* Required for underline effect */
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-  text-decoration: none;
+  color: #19500e;
 }
 
+/* Underline effect for nav links */
 .nav-links a:after {
   content: '';
   display: block;
-  height: 2px; /* Underline thickness */
-  background: #19500e; /* Underline color */
-  transform: scaleX(0); /* Initially hide the underline */
-  transition: transform 0.3s ease; /* Animation */
+  height: 2px;
+  background: #19500e;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
   position: absolute;
   left: 0;
-  bottom: -5px; /* Adjust position of the underline */
+  bottom: -5px;
   width: 100%;
 }
 
 .nav-links a:hover:after,
 .nav-links a:focus:after {
-  transform: scaleX(1); /* Show underline on hover */
+  transform: scaleX(1);
 }
 
-.nav-links .dropdown {
+/* Dropdown Menu */
+.dropdown {
   position: relative;
 }
 
@@ -63,34 +95,26 @@
   min-width: 200px;
   z-index: 1;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  display: flex;
+  display: none;
   flex-direction: column;
+  padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
 }
 
 .dropdown-content a {
-  padding: 10px;
+  padding: 10px 20px;
   text-decoration: none;
   color: #333;
-  font-size: 18px;
+  font-size: 16px;
   border-bottom: 1px solid #f0f0f0;
-  position: relative;
+  transition: background 0.3s ease;
 }
 
-.dropdown-content a:after {
-  content: '';
-  display: block;
-  height: 2px;
-  background: black;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-.dropdown-content a:hover:after {
-  transform: scaleX(1);
+.dropdown-content a:hover {
+  background-color: #f8f8f8;
 }
 
 .dropdown-content a:last-child {
@@ -99,10 +123,9 @@
 
 /* User and Cart Section */
 .user-cart {
-
   display: flex;
   align-items: center;
-  margin-right: 50px; /* Adjust margin as needed */
+  margin-right: 20px;
 }
 
 .sign-in-button {
@@ -110,34 +133,152 @@
   align-items: center;
   border: none;
   font-size: 16px;
-  background-color: transparent; /* No background */
-  cursor: pointer; /* Pointer cursor on hover */
-  margin-right: 20px; /* Space between user icon and cart */
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 20px;
 }
 
 .user-icon {
-  height: 40px; /* Adjust icon size */
-  border-radius: 50%; /* Make it circular */
-  margin-right: 5px; /* Space between icon and text */
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 .cart-button {
   display: flex;
   align-items: center;
   border: none;
-  background-color: transparent; /* No background */
-  cursor: pointer; /* Pointer cursor on hover */
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .cart-icon {
-  font-size: 20px; /* Size of cart icon */
-  margin-right: 5px; /* Space between icon and text */
+  font-size: 22px;
+  margin-right: 5px;
 }
 
 .cart-count {
-  font-size: 18px; /* Adjust font size */
-  color: rgb(0, 0, 0); /* Text color */
-  background-color: #e0e0e0; /* Background for count */
-  border-radius: 50%; /* Circular background */
-  padding: 0 5px; /* Padding for count */
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: left;
+    margin: 0px 10px;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  .user-cart {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo img {
+    height: 50px;
+    margin-left: 10px;
+  }
+
+  .sign-in-button,
+  .cart-button {
+    font-size: 14px;
+  }
+
+  .cart-icon {
+    font-size: 18px;
+  }
+
+  .cart-count {
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Mobile Menu (Sidebar) */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Hidden initially */
+  height: 100%;
+  width: 250px;
+  background-color: white;
+  box-shadow: -4px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.mobile-menu.open {
+  right: 0; /* Slide-in from right */
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.mobile-nav-links li {
+  margin: 20px 0;
+}
+
+.mobile-nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+  color: #7234f7;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 }
