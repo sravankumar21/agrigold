@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form as BootstrapForm, Modal } from 'react-bootstrap';
 import axios from 'axios';
-import '../styles/Looper.css'; // Assuming you have a separate CSS file
-import looperImage from '../images/toolimage1.jpg'; // Replace with your actual image path
+import Form from '../components/wishlistform.js'; // Adjust the import path if needed
+import '../styles/Looper.css';
+import looperImage from '../images/toolimage1.jpg';
 
 const Looper = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     const filters = {
         price: ['Below $20', '$20-$50', 'Above $50'],
@@ -19,7 +22,7 @@ const Looper = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5002/products'); // Replace with your actual backend endpoint
+                const response = await axios.get('http://localhost:5002/products');
                 setProducts(response.data);
                 setLoading(false);
             } catch (err) {
@@ -31,13 +34,25 @@ const Looper = () => {
         fetchProducts();
     }, []);
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
+    // Function to open the modal with the selected product
+    const handleBuyNowClick = async (productId) => {
+        try {
+            const response = await axios.get(`http://localhost:5002/products/${productId}`);
+            setSelectedProduct(response.data);
+            setShowModal(true);
+        } catch (err) {
+            console.error("Error fetching product:", err);
+        }
+    };
 
-    if (error) {
-        return <p>Error loading products: {error.message}</p>;
-    }
+    // Function to close the modal
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSelectedProduct(null);
+    };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading products: {error.message}</p>;
 
     return (
         <Container className="looper-page">
@@ -60,17 +75,17 @@ const Looper = () => {
                     <div className="filter-section">
                         <h5>Price</h5>
                         {filters.price.map((price, index) => (
-                            <Form.Check key={index} type="checkbox" label={price} />
+                            <BootstrapForm.Check key={index} type="checkbox" label={price} />
                         ))}
 
                         <h5>Brand</h5>
                         {filters.brand.map((brand, index) => (
-                            <Form.Check key={index} type="checkbox" label={brand} />
+                            <BootstrapForm.Check key={index} type="checkbox" label={brand} />
                         ))}
 
                         <h5>Availability</h5>
                         {filters.availability.map((availability, index) => (
-                            <Form.Check key={index} type="checkbox" label={availability} />
+                            <BootstrapForm.Check key={index} type="checkbox" label={availability} />
                         ))}
                     </div>
                 </Col>
@@ -96,13 +111,22 @@ const Looper = () => {
                                 {/* Add to Cart and Buy Now Buttons */}
                                 <div className="product-actions">
                                     <Button variant="primary" className="add-to-cart-btn">Add to Cart</Button>
-                                    <Button variant="success" className="buy-now-btn">Buy Now</Button>
+                                    <Button variant="success" className="buy-now-btn" onClick={() => handleBuyNowClick(product._id)}>Buy Now</Button>
                                 </div>
                             </Col>
                         </Row>
                     ))}
                 </Col>
             </Row>
+
+            {/* Modal for Buy Now */}
+            <Modal show={showModal} onHide={handleCloseModal} centered>
+                <Modal.Body>
+                    {selectedProduct && (
+                        <Form onClose={handleCloseModal} productId={selectedProduct._id} productName={selectedProduct.name} />
+                    )}
+                </Modal.Body>
+            </Modal>
         </Container>
     );
 };

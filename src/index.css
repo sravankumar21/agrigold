@@ -12,3 +12,6 @@ h3, h4, h5, h6, p {
 }
 
 /* You can also add specific styles for other elements if needed */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
