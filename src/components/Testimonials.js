@@ -71,23 +71,19 @@ const Testimonials = () => {
 
             <h2 className="testimonials-heading-display">Testimonials</h2>
             <div className="testimonial-carousel-container">
-                <Row className="testimonial-carousel">
-                    {[0, 1].map(i => {
-                        const currentIndex = (slideIndex + i) % testimonials.length;
-                        return (
-                            <Col key={currentIndex} md={6} className="testimonial-col">
-                                <div className="testimonial-carousel-slide">
-                                    <img src={testimonials[currentIndex].image} alt={`${testimonials[currentIndex].author}'s profile`} className="testimonial-image" />
-                                    <div className="testimonial-text">
-                                        <p>"{testimonials[currentIndex].quote}"</p>
-                                        <h4>{testimonials[currentIndex].author}</h4>
-                                        <p>{testimonials[currentIndex].position}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                        );
-                    })}
-                </Row>
+            <Row className="testimonial-carousel">
+    <Col key={slideIndex} md={12} className="testimonial-col">
+        <div className="testimonial-carousel-slide">
+            <img src={testimonials[slideIndex].image} alt={`${testimonials[slideIndex].author}'s profile`} className="testimonial-image" />
+            <div className="testimonial-text">
+                <p>"{testimonials[slideIndex].quote}"</p>
+                <h4>{testimonials[slideIndex].author}</h4>
+                <p>{testimonials[slideIndex].position}</p>
+            </div>
+        </div>
+    </Col>
+</Row>
+
                 <div className="testimonial-controls">
                     <div className="testimonial-dots">
                         {testimonials.map((_, index) => (
