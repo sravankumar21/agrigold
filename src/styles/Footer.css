@@ -1,13 +1,13 @@
 /* Footer Section Styling */
 .footer-section {
-    background-color: #1f6125;
-    color: #000000;
+    background-color: #007f5c;
+    color: #fff;
     padding: 40px 0;
     width: 100%;
 }
 .footer-section p {
     
-    color: #000000;
+    color: #fff;
     
 }
 
@@ -32,7 +32,9 @@
 .footer-logo {
     width: 180px;
     margin-bottom: 10px;
+    filter: brightness(0) invert(1); /* Converts colors to white */
 }
+
 
 
 
@@ -63,12 +65,12 @@
 }
 
 .footer-contact-list li svg {
-    color: #000000;
+    color: #fff;
     font-size: 18px;
 }
 
 .footer-links-list li a {
-    color: #000000;
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -81,11 +83,11 @@
     text-align: center;
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgb(255, 255, 255);
 }
 
 .footer-bottom-text a {
-    color: #000000;
+    color: #fff;
     text-decoration: none;
 }
 

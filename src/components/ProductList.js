@@ -1,10 +1,12 @@
 // src/components/ProductList.js
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'; // Import useParams to get category from URL
 import axios from 'axios';
 import NavbarTwo from '../components/NavbarTwo';
 import '../styles/ProductList.css';
 
-const ProductList = ({ category }) => {
+const ProductList = () => {
+    const { category } = useParams();  // Get the category from the URL
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');

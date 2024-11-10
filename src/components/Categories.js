@@ -13,15 +13,23 @@ import agristoreimg from '../images/agristore.jpg';
 import sprayers from '../images/sprayers.jpg';
 import pool from '../images/pool.jpg';
 
+
+
 const Categories = () => {
     const products = [
         { name: "Tools", image: tools, url: "/tools" },
         { name: "Irrigation", image: wheatimg, url: "/irrigation" },
-        { name: "Agri Store", image: agristoreimg, url: "/agri-store" },
-        { name: "Greenhouse", image: productImage, url: "/greenhouse" },
-        { name: "Pumps and Sprayers", image: sprayers, url: "/pumps-and-sprayers" },
-        { name: "Animal Husbandry", image: animalimg, url: "/animal-husbandry" },
-        { name: "Landscape and Pool", image: pool, url: "/landscape-and-pool" },
+        // { name: "Agri Store", image: agristoreimg, url: "/agri-store" },
+        // { name: "Greenhouse", image: productImage, url: "/greenhouse" },
+        // { name: "Pumps and Sprayers", image: sprayers, url: "/pumps-and-sprayers" },
+        // { name: "Animal Husbandry", image: animalimg, url: "/animal-husbandry" },
+        // { name: "Landscape and Pool", image: pool, url: "/landscape-and-pool" },
+        { name: "Agri Store", image: agristoreimg, url: "/comingsoon" },
+        { name: "Greenhouse", image: productImage, url: "/comingsoon" },
+        { name: "Pumps and Sprayers", image: sprayers, url: "/comingsoon" },
+        { name: "Animal Husbandry", image: animalimg, url: "/comingsoon" },
+        { name: "Landscape and Pool", image: pool, url: "/comingsoon" }
+
     ];
 
     // Slider settings for different screen sizes with autoplay

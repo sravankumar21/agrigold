@@ -24,22 +24,24 @@
 }
 
 /* Why We Shine Section */
-.why-we-shine-images {
+.why-we-shine-icons {
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
 }
 
 .why-we-shine-item {
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center content horizontally */
     text-align: center;
     flex: 1;
     padding: 0 20px;
 }
 
-.why-we-shine-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+.why-we-shine-icon {
+    font-size: 50px; /* Set icon size */
+    color: #007f5c; /* Icon color */
     margin-bottom: 20px;
 }
 
@@ -54,6 +56,8 @@
     color: #6c6c6c;
 }
 
+
+
 /* Carousel Container */
 .testimonial-carousel-container {
     width: 100%;
@@ -63,7 +67,7 @@
     border-radius: 20px;
     padding: 40px;
     margin: 40px auto;
-    background-color: #005d09;
+    background-color: #007f5c;
     box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
 }
 
@@ -153,7 +157,7 @@
     border-radius: 20px;
     padding: 40px;
     margin: 40px auto;
-    background-color: #005d09; /* Container background */
+    background-color: #007f5c; /* Container background */
     box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
 }
 

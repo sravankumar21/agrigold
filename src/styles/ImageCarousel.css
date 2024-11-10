@@ -1,6 +1,6 @@
 /* Carousel image styling */
 .carousel-img {
-    height: 725px;
+    height: 680px;
     object-fit: cover;
     opacity: 1; /* Slight transparency to emphasize text */
     box-shadow: 0 -10px 15px rgba(0, 0, 0, 1); /* Add a subtle top shadow */
@@ -10,7 +10,7 @@
 /* Centering the caption content (headings, subheadings, and button) */
 .carousel-caption-custom {
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 50%;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -38,7 +38,7 @@
 .custom-btn {
     padding: 12px 30px;
     font-size: 20px;
-    background-color: #033203; /* Solid green */
+    background-color: #007f5c; /* Solid green */
     color: white;
     border: none;
     border-radius: 5px;

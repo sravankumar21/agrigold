@@ -49,7 +49,7 @@
     cursor: not-allowed;
 }
 
-/* Carousel container with fixed height and dynamic background */
+/* Unique carousel container */
 .unique-carousel {
     display: flex;
     align-items: center;
@@ -58,18 +58,31 @@
     padding: 30px;
     width: 100%;
     margin: 0 auto;
-    height: 400px; /* Fixed height */
+    height: 400px;
     position: relative;
-    background-color: black; /* Black background */
-    background: linear-gradient(45deg, #3cb371, #007f66, #007f5c); /* Gradient green */
+    background-color: black;
+    background: linear-gradient(45deg, #3cb371, #007f66, #007f5c);
     transition: background-position 0.2s ease-in-out;
-    background-size: 400% 400%; /* Allow for the gradient to move */
+    background-size: 400% 400%;
+    cursor: pointer; /* Makes the entire container clickable */
+    text-decoration: none; /* Removes underline from Link */
 }
+
+/* Right side icon styling */
+.unique-carousel-right {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Left part of the carousel */
 .unique-carousel-left {
     text-align: left;
     width: 50%;
+    text-decoration: none;
 }
 
 /* Subheading for the category */
@@ -150,3 +163,5 @@
 .unique-carousel:hover::before {
     background-position: var(--x, 50%) var(--y, 50%);
 }
+
+

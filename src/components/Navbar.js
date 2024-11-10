@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import ImageCarousel from './ImageCarousel';
-import logo from '../images/logoagrigold.png'; // Import your logo image
-import userIcon from '../images/user-icon.png'; // Import your user icon image
+import logo from '../images/logoagrigold.png';
+import userIcon from '../images/user-icon.png';
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(null);
-  const [cartCount, setCartCount] = useState(0); // State to manage cart count
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
+  const [cartCount, setCartCount] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleDropdown = (menu) => {
     setDropdown(menu === dropdown ? null : menu);
@@ -64,15 +64,36 @@ const Navbar = () => {
               <a href="#">Products</a>
               {dropdown === 'products' && (
                 <div className="dropdown-content">
-                  <a href="#">Drip Lanes</a>
                   <a href="#">Drip Irrigation</a>
-                  <a href="#">Drip Tapes</a>
-                  <a href="#">Drip Tubes</a>
+                  <a href="#">Micro & Mini Sprinklers</a>
+                  <a href="#">Sprinkler Irrigation</a>
+                  <a href="#">Filters, Dosing Pump & Injectors</a>
+                  <a href="#">PVC & HDPE Piping Systems</a>
+                  <a href="#">Plumbing & Drainage Systems</a>
+                  <a href="#">Plastic Sheets</a>
+                  <a href="#">Planting Material</a>
+                  <a href="#">Environment Controlled Agriculture</a>
+                  <a href="#">Green Energy Products</a>
+                  <a href="#">Turnkey Projects</a>
                 </div>
               )}
             </li>
-            <li>
+            <li
+              className="dropdown"
+              onMouseEnter={() => handleDropdown('segments')}
+              onMouseLeave={() => setDropdown(null)}
+            >
               <a href="#">Segments</a>
+              {dropdown === 'segments' && (
+                <div className="dropdown-content">
+                  <a href="#">Micro Irrigation</a>
+                  <a href="#">Agri Inputs</a>
+                  <a href="#">Building & Construction</a>
+                  <a href="#">Infrastructure & Public Utilities</a>
+                  <a href="#">Industrial</a>
+                  <a href="#">End to End Solutions</a>
+                </div>
+              )}
             </li>
             <li>
               <a href="#">Contact Us</a>

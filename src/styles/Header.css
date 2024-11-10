@@ -1,15 +1,16 @@
 /* General Header Styles */
 .header {
-  background-color: #e5f5e0; /* Light green background */
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 5px 0;
+  background-color: #007f5c; /* Light green background */
+  margin: 0;
+  padding: 1px 0; /* Adjusted padding */
   text-align: center;
   font-size: 14px;
-  color: #333;
+  color: #fff;
   font-family: 'Bradley Hand', cursive;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
+/* Container */
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -23,22 +24,24 @@
 .left-content {
   display: flex;
   align-items: center;
-  gap: 30px; /* Use gap for spacing between elements */
+  gap: 20px; /* Reduced gap for compact spacing */
 }
 
 .welcome-text {
   font-size: 14px;
   font-weight: bold;
-  margin-right: 10px;
+  color: #fff;
+  margin-right: 50px;
+  margin-top: 14px;
 }
 
 .social-icons {
   display: flex;
-  gap: 15px;
+  gap: 10px; /* Slightly reduced gap */
 }
 
 .social-icons a {
-  color: #333;
+  color: #fff;
   font-size: 18px;
   transition: color 0.3s ease;
 }
@@ -51,11 +54,12 @@
 .contact-info {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px; /* Reduced gap for compact display */
   font-weight: bold;
 }
 
 .contact-info svg {
+  margin-left: 10px;
   margin-right: 5px;
 }
 
@@ -69,34 +73,31 @@
 
   .left-content {
     flex-direction: column;
-    gap: 10px; /* Less space between welcome text and social icons */
   }
 
   .social-icons {
     justify-content: center;
-    gap: 10px; /* Reduce gap between social icons on smaller screens */
   }
 
   .contact-info {
     justify-content: center;
-    gap: 10px;
   }
 }
 
 @media (max-width: 500px) {
   .welcome-text {
-    font-size: 12px; /* Smaller font size for very small screens */
+    font-size: 12px;
   }
 
   .social-icons a {
-    font-size: 16px; /* Smaller icon size on very small screens */
+    font-size: 16px;
   }
 
   .contact-info {
-    font-size: 12px; /* Smaller contact info text */
+    font-size: 12px;
   }
 
   .contact-info svg {
-    font-size: 14px; /* Smaller icons for contact info */
+    font-size: 14px;
   }
 }

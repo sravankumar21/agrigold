@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #3c7519; /* Dark Green */
+    background-color: #007f5c; /* Dark Green */
     color: rgb(0, 0, 0);
     position: sticky;
     top: 0;
@@ -20,6 +20,7 @@
   
   .logo-button-two img {
     height: 40px; /* Adjust logo size */
+    filter: brightness(0) invert(1); /* Converts colors to white */
   }
   
   .search-bar-two {

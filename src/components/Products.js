@@ -1,32 +1,33 @@
-// src/components/Products.js
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { GiSeedling,GiMedicinePills } from 'react-icons/gi'; // Import seedling icon
+import { LiaSprayCanSolid } from "react-icons/lia";
 import '../styles/Products.css';
-import seedsImage from '../images/seedimage.jpg';
-import fertilizersImage from '../images/fertilizer.jpg';
-import pesticidesImage from '../images/pesticides.jpg';
 
 const Products = () => {
     const categories = [
         {
             name: "Seeds",
             buttons: ["Paddy", "Maize", "Wheat", "Cotton", "Vegetables", "Barley"],
-            image: seedsImage,
-            bgColor: "#003300"
+            icon: <GiSeedling size={220} color="black" />, // Seedling icon for seeds
+            bgColor: "#003300",
+            link: "/products/seeds"
         },
         {
             name: "Fertilizers",
             buttons: ["Nitrogen", "Phosphorus", "Potassium", "Organic", "Inorganic", "Compost"],
-            image: fertilizersImage,
-            bgColor: "#007f66"
+            icon: <GiMedicinePills size={220} color="black" />, // Droplet icon for fertilizers
+            bgColor: "#007f66",
+            link: "/products/fertilizers"
         },
         {
             name: "Pesticides",
             buttons: ["Herbicides", "Insecticides", "Fungicides", "Bactericides", "Nematicides", "Rodenticides"],
-            image: pesticidesImage,
-            bgColor: "#007f5c"
+            icon: <LiaSprayCanSolid size={220} color="black" />, // Cloud icon for pesticides
+            bgColor: "#007f5c",
+            link: "/products/pesticides"
         }
     ];
 
@@ -50,7 +51,7 @@ const Products = () => {
                 </div>
             </div>
 
-            <div className="unique-carousel" style={{ backgroundColor: currentCategory.bgColor }}>
+            <Link to={currentCategory.link} className="unique-carousel" style={{ backgroundColor: currentCategory.bgColor }}>
                 <div className="unique-carousel-left">
                     <h2 className="unique-subheading">{currentCategory.name}</h2>
                     <div className="unique-buttons-container">
@@ -62,9 +63,9 @@ const Products = () => {
                     </div>
                 </div>
                 <div className="unique-carousel-right">
-                    <img src={currentCategory.image} alt={currentCategory.name} className="unique-category-image" />
+                    {currentCategory.icon}
                 </div>
-            </div>
+            </Link>
         </Container>
     );
 };

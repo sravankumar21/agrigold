@@ -22,7 +22,7 @@ const Looper = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5002/products');
+                const response = await axios.get('http://localhost:5050/products');
                 setProducts(response.data);
                 setLoading(false);
             } catch (err) {
@@ -37,7 +37,7 @@ const Looper = () => {
     // Function to open the modal with the selected product
     const handleBuyNowClick = async (productId) => {
         try {
-            const response = await axios.get(`http://localhost:5002/products/${productId}`);
+            const response = await axios.get(`http://localhost:5050/products/${productId}`);
             setSelectedProduct(response.data);
             setShowModal(true);
         } catch (err) {

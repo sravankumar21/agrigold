@@ -11,6 +11,8 @@ import AdminDashboard from './admin/AdminDashboard';
 import AddProductForm from './admin/AddProductForm';
 import ProductList from './components/ProductList';
 import Products from './components/Products';
+import IrrigationPage from './components/Irrigation';
+import ComingSoon from './components/ComingSoon';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AgrigoldIntroduction />} />
           <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/irrigation" element={<IrrigationPage />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/tools/looper" element={<Looper />} />
           <Route path="/seeds/paddy" element={<Paddy />} />
           <Route path="/admin" element={<AdminDashboard />} />
@@ -31,8 +35,13 @@ function App() {
             path="/cart" 
             element={<AddToCart cartItems={cartItems} setCartItems={setCartItems} />} 
           /> {/* Add Cart Page Route */}
-           <Route path="/products" element={<Products />} /> {/* Link to Categories */}
-           <Route path="/products/:category" element={<ProductList />} /> {/* Dynamic Category Route */}
+          <Route path="/products" element={<Products />} /> {/* Link to Categories */}
+          
+          {/* Dynamic Route for Category */}
+          <Route 
+            path="/products/:category" 
+            element={<ProductList />} 
+          /> 
         </Routes>
       </div>
     </Router>

@@ -8,9 +8,8 @@ import ahmedPatel from '../images/usericon.png';
 import emilyOBrien from '../images/usericon.png';
 import rajKumar from '../images/usericon.png';
 import lilaGupta from '../images/usericon.png';
-import img1 from '../images/betterworld.jpg';
-import img2 from '../images/betterworld.jpg';
-import img3 from '../images/betterworld.jpg';
+import { FaLeaf, FaShippingFast, FaAward } from 'react-icons/fa';
+
 
 const Testimonials = () => {
     const [slideIndex, setSlideIndex] = useState(0);
@@ -45,29 +44,30 @@ const Testimonials = () => {
     return (
         <Container className="testimonials-section">
             <h2 className="whyweshine-heading-display">Why We Shine</h2>
-            <Row className="why-we-shine-images">
-                <Col className="why-we-shine-item">
-                    <img src={img1} alt="Delivering Genuine Products" className="why-we-shine-image" />
-                    <div className="why-we-shine-content">
-                        <h4>Delivering Genuine Products</h4>
-                        <p>Authentic products, make your cultivation way easy.</p>
-                    </div>
-                </Col>
-                <Col className="why-we-shine-item">
-                    <img src={img2} alt="Fast Delivery" className="why-we-shine-image" />
-                    <div className="why-we-shine-content">
-                        <h4>Fast Delivery</h4>
-                        <p>Quick and efficient delivery of all farm supplies.</p>
-                    </div>
-                </Col>
-                <Col className="why-we-shine-item">
-                    <img src={img3} alt="Superior Quality" className="why-we-shine-image" />
-                    <div className="why-we-shine-content">
-                        <h4>Superior Quality</h4>
-                        <p>Top-quality products for all your agricultural needs.</p>
-                    </div>
-                </Col>
-            </Row>
+            <Row className="why-we-shine-icons">
+    <Col className="why-we-shine-item">
+        <FaLeaf className="why-we-shine-icon" />
+        <div className="why-we-shine-content">
+            <h4>Delivering Genuine Products</h4>
+            <p>Authentic products, make your cultivation way easy.</p>
+        </div>
+    </Col>
+    <Col className="why-we-shine-item">
+        <FaShippingFast className="why-we-shine-icon" />
+        <div className="why-we-shine-content">
+            <h4>Fast Delivery</h4>
+            <p>Quick and efficient delivery of all farm supplies.</p>
+        </div>
+    </Col>
+    <Col className="why-we-shine-item">
+        <FaAward className="why-we-shine-icon" />
+        <div className="why-we-shine-content">
+            <h4>Superior Quality</h4>
+            <p>Top-quality products for all your agricultural needs.</p>
+        </div>
+    </Col>
+</Row>
+
 
             <h2 className="testimonials-heading-display">Testimonials</h2>
             <div className="testimonial-carousel-container">
