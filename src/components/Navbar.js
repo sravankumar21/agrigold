@@ -1,21 +1,54 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import ImageCarousel from './ImageCarousel';
 import logo from '../images/logoagrigold.png';
 import userIcon from '../images/user-icon.png';
+import { jwtDecode } from 'jwt-decode'; // Correct import
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+    
+    if (authToken) {
+      // Optionally, decode the token to check its validity (e.g., expiration date)
+      try {
+        const decoded = jwtDecode(authToken); // Decode the token (if you want to check expiration)
+        const isTokenValid = decoded.exp > Date.now() / 1000; // Check if token is expired
+        if (isTokenValid) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false); // Token is expired
+        }
+      } catch (error) {
+        setIsLoggedIn(false); // If there's an error decoding, assume token is invalid
+      }
+    } else {
+      setIsLoggedIn(false); // No token, user is not logged in
+    }
+  }, []);
 
   const handleDropdown = (menu) => {
     setDropdown(menu === dropdown ? null : menu);
   };
 
   const handleSignInClick = () => {
-    console.log("Sign In button clicked");
+    // Navigate to login page if the user is not logged in
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // Remove the token from localStorage
+    setIsLoggedIn(false); // Update state to reflect user is logged out
+    navigate('/'); // Redirect to home page after logout
   };
 
   const toggleMobileMenu = () => {
@@ -101,10 +134,12 @@ const Navbar = () => {
           </ul>
 
           <div className="user-cart">
-            <button className="sign-in-button" onClick={handleSignInClick}>
+            {/* Single Button: If logged in, show Log Out, otherwise show Sign In */}
+            <button className="sign-in-button" onClick={isLoggedIn ? handleLogout : handleSignInClick}>
               <img src={userIcon} alt="User Icon" className="user-icon" />
-              <span>Sign In</span>
+              <span>{isLoggedIn ? 'Log Out' : 'Sign In'}</span>
             </button>
+
             <button className="cart-button">
               <span className="cart-icon">🛒</span>
               <span className="cart-count">{cartCount}</span>

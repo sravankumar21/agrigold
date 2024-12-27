@@ -13,6 +13,8 @@ import ProductList from './components/ProductList';
 import Products from './components/Products';
 import IrrigationPage from './components/Irrigation';
 import ComingSoon from './components/ComingSoon';
+import SignUp from './components/SignupPage';
+import Login from './components/LoginPage';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -42,6 +44,8 @@ function App() {
             path="/products/:category" 
             element={<ProductList />} 
           /> 
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
