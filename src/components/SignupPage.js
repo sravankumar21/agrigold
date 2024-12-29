@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { EyeSlashFilledIcon } from "../assets/EyeSlash";
+import { EyeFilledIcon } from "../assets/Eye";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const navigate=useNavigate();
+
     const [formData, setFormData] = useState({
         firstname: "",
         lastname: "",
@@ -26,6 +32,8 @@ const SignUp = () => {
             const response = await axios.post("http://localhost:5050/farmers", formData);
             console.log("Success response from server:", response.data); // Debugging: Log server response
             alert("Farmer created successfully!");
+            navigate("/login")
+            
 
             setFormData({
                 firstname: "",
@@ -44,11 +52,11 @@ const SignUp = () => {
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <img
+                {/* <img
                     className="mx-auto h-10 w-auto"
-                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0BBltaRwdDLklgWJFQ8_1WNuTevg2mnA-Og&s"
                     alt="Your Company"
-                />
+                /> */}
                 <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
                     Sign up for an account
                 </h2>
@@ -68,7 +76,7 @@ const SignUp = () => {
                                 value={formData.firstname}
                                 onChange={handleChange}
                                 required
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                                className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                             />
                         </div>
                     </div>
@@ -85,7 +93,7 @@ const SignUp = () => {
                                 value={formData.lastname}
                                 onChange={handleChange}
                                 required
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                                className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                             />
                         </div>
                     </div>
@@ -104,7 +112,7 @@ const SignUp = () => {
                                 required
                                 pattern="[0-9]{10}"
                                 placeholder="1234567890"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                                className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                             />
                         </div>
                     </div>
@@ -121,12 +129,12 @@ const SignUp = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 autoComplete="email"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                                className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                             />
                         </div>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <label htmlFor="address" className="block text-sm font-medium text-gray-900">
                             Address
                         </label>
@@ -141,25 +149,38 @@ const SignUp = () => {
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                             />
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-900">
-                            Password
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                                minLength={8}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                            />
-                        </div>
-                    </div>
+<div>
+    <label htmlFor="password" className="block text-sm font-medium text-gray-900">
+        Password
+    </label>
+    <div className="mt-2 relative">
+        <input
+            id="password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            value={formData.password}
+            onChange={handleChange}
+            required
+            minLength={8}
+            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+        />
+        <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700 focus:outline-none"
+        >
+            {showPassword ? (
+                <EyeSlashFilledIcon />
+                
+            ) : (
+                <EyeFilledIcon />
+            )}
+        </button>
+    </div>
+</div>
+
 
                     <div>
                         <button

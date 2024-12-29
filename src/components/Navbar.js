@@ -11,6 +11,8 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +64,7 @@ const Navbar = () => {
           <div className="logo">
             <img src={logo} alt="Agrigold Logo" />
           </div>
+         
 
           {/* Hamburger icon for mobile */}
           <div className="hamburger" onClick={toggleMobileMenu}>

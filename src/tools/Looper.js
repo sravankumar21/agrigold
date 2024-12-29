@@ -4,6 +4,7 @@ import axios from 'axios';
 import Form from '../components/wishlistform.js'; // Adjust the import path if needed
 import '../styles/Looper.css';
 import looperImage from '../images/toolimage1.jpg';
+import { jwtDecode } from 'jwt-decode';
 
 const Looper = () => {
     const [products, setProducts] = useState([]);
@@ -11,6 +12,22 @@ const Looper = () => {
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [cartItems, setCartItems] = useState([]);
+    const getUserIdFromToken = () => {
+        const token = localStorage.getItem('authToken');
+        // Replace with your storage method
+        if (!token) return null;
+    
+        try {
+            const decoded = jwtDecode(token)// Decodes the JWT token
+            return decoded.userId || decoded.id; // Adjust based on your token's structure
+        } catch (error) {
+            console.error("Invalid token", error);
+            return null;
+        }
+    };
+    
+    const userId=getUserIdFromToken()// State to hold cart items
 
     const filters = {
         price: ['Below $20', '$20-$50', 'Above $50'],
@@ -20,6 +37,7 @@ const Looper = () => {
 
     // Fetch data from the backend API
     useEffect(() => {
+       
         const fetchProducts = async () => {
             try {
                 const response = await axios.get('http://localhost:5050/products');
@@ -33,6 +51,25 @@ const Looper = () => {
 
         fetchProducts();
     }, []);
+
+    // Function to handle adding a product to the cart
+    const handleAddToCart = async (productId) => {
+        const product = products.find((item) => item._id === productId);
+        const cartItem = {
+            product_id: productId,
+            user_id: userId, // Replace with actual user ID from auth
+            quantity: 1,
+            status: 'active',
+        };
+
+        try {
+            const response = await axios.post('http://localhost:5050/cart', cartItem);
+            setCartItems([...cartItems, { ...product, quantity: 1 }]);
+            alert('Product added to cart!');
+        } catch (err) {
+            console.error('Error adding to cart:', err.message);
+        }
+    };
 
     // Function to open the modal with the selected product
     const handleBuyNowClick = async (productId) => {
@@ -110,7 +147,7 @@ const Looper = () => {
 
                                 {/* Add to Cart and Buy Now Buttons */}
                                 <div className="product-actions">
-                                    <Button variant="primary" className="add-to-cart-btn">Add to Cart</Button>
+                                    <Button variant="primary" onClick={() => handleAddToCart(product._id)} className="add-to-cart-btn">Add to Cart</Button>
                                     <Button variant="success" className="buy-now-btn" onClick={() => handleBuyNowClick(product._id)}>Buy Now</Button>
                                 </div>
                             </Col>

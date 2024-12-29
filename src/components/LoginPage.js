@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { EyeSlashFilledIcon } from "../assets/EyeSlash";
+import { EyeFilledIcon } from "../assets/Eye";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [formData, setFormData] = useState({
     mobile_no: '',
     password: ''
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate(); // To redirect upon successful login
@@ -41,11 +44,11 @@ export default function Login() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
+          {/* <img
             alt="Your Company"
             src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
             className="mx-auto h-10 w-auto"
-          />
+          /> */}
           <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
@@ -68,28 +71,41 @@ export default function Login() {
                   placeholder="1234567890"
                   value={formData.mobile_no}
                   onChange={handleChange}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                 />
               </div>
             </div>
 
             {/* Password */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-900">
-                Password
-              </label>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                />
-              </div>
-            </div>
+           <div>
+               <label htmlFor="password" className="block text-sm font-medium text-gray-900">
+                   Password
+               </label>
+               <div className="mt-2 relative">
+                   <input
+                       id="password"
+                       name="password"
+                       type={showPassword ? "text" : "password"}
+                       value={formData.password}
+                       onChange={handleChange}
+                       required
+                       minLength={8}
+                       className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                   />
+                   <button
+                       type="button"
+                       onClick={() => setShowPassword(!showPassword)}
+                       className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700 focus:outline-none"
+                   >
+                       {showPassword ? (
+                           <EyeSlashFilledIcon />
+                           
+                       ) : (
+                           <EyeFilledIcon />
+                       )}
+                   </button>
+               </div>
+           </div>
 
             {/* Error Message */}
             {errorMessage && (
