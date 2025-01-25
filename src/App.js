@@ -15,6 +15,7 @@ import IrrigationPage from './components/Irrigation';
 import ComingSoon from './components/ComingSoon';
 import SignUp from './components/SignupPage';
 import Login from './components/LoginPage';
+import PlaceOrder from './components/PlaceOrder';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -46,6 +47,8 @@ function App() {
           /> 
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+
+          <Route path="/placeorder" element={<PlaceOrder />} />
         </Routes>
       </div>
     </Router>

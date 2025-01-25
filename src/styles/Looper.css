@@ -1,57 +1,131 @@
+/* Looper Page */
 .looper-page {
-    padding: 40px 0;
+    padding: -20px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
+/* Navbar */
+.looper-page-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.looper-page-navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.looper-page-navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Breadcrumb */
 .breadcrumb {
+    position: fixed;
     background-color: transparent;
+    margin: 20px 0;
     padding-left: 0;
 }
 
-.filter-section {
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+/* Filter Section */
+.looper-page-filtersection {
+    position: fixed;
+    top: 300px; /* Adds margin to move it slightly below the navbar */
+    left: 40px;
+    width: 200px;
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.looper-page-filtersection h4 {
     margin-top: 20px;
-}
-
-.filter-section h5 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.product-row {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
     margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
 }
 
-.product-image-container {
-    width: 100%;
-    height: 300px; /* Adjusted height */
+.looper-page-filtersection h5 {
+    margin-bottom: 10px;
+    color: #007bff;
+    font-size: 16px;
+}
+
+.looper-page-filtersection .form-check {
+    margin-bottom: 10px;
+}
+
+/* Products Section */
+.products-container {
+    margin-left: 260px; /* Space for the filters + padding */
+    margin-top: 120px; /* Space for the navbar */
+    overflow-y: auto;
+    height: calc(100vh - 120px); /* Adjust height for navbar */
+    padding-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Individual Product */
+.product-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 25px;
+    width: calc(33.33% - 20px); /* Three products per row */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
 }
 
 .product-image {
     width: 100%;
-    height: 100%;
+    height: 150px;
     object-fit: cover;
-    transition: all 0.3s ease; /* Smooth hover effect */
-}
-
-.product-image:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
-.product-info {
-    padding-left: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .product-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    color: #333;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .product-price {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    color: #007bff;
     margin-bottom: 10px;
 }
 
@@ -65,24 +139,61 @@
     color: green;
 }
 
-.product-company {
-    margin-bottom: 10px;
-}
-
-.product-rating {
-    margin-bottom: 10px;
-}
-
-.product-seller {
-    margin-bottom: 20px;
-}
-
 .product-actions {
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
 
-.add-to-cart-btn,
-.buy-now-btn {
-    width: 140px;
+/* Modal */
+.modal-body {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Image styles */
+.product-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .products-container {
+        margin-left: 20px;
+    }
+
+    .product-card {
+        width: calc(50% - 20px); /* Two products per row on smaller screens */
+    }
+
+    .looper-page-filtersection {
+        width: 100%;
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        width: calc(100% - 20px); /* Single product per row on mobile */
+    }
+
+    .looper-page-filtersection {
+        width: 100%;
+        padding: 10px;
+    }
 }

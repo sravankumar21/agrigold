@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/AddToCart.css';
-import suggestedimg from '../images/seeds.jpeg';
 
-const suggestedProducts = [
-  { id: 1, name: "Suggested Product A", image: suggestedimg, price: 120 },
-  { id: 2, name: "Suggested Product B", image: suggestedimg, price: 135 },
-  { id: 3, name: "Suggested Product C", image: suggestedimg, price: 140 },
-];
-
-const AddToCart = () => {
+const AddToCartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Fetch cart items on component mount
   useEffect(() => {
     fetchCartItems();
   }, []);
@@ -72,90 +66,113 @@ const AddToCart = () => {
     }
   };
 
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = cartItems.reduce((total, item) => total + item.quantity * item.product_id.price, 0);
+  const deliveryCharge = 40;
+  const totalPayable = totalPrice + deliveryCharge;
+  const totalDiscount = cartItems.reduce((total, item) => total + (item.product_id.originalPrice - item.product_id.price) * item.quantity, 0);
+
   return (
-    <Container className="add-to-cart-page">
-      <h2 className="mt-4">Items in Your Cart</h2>
+    <Container className="add-to-cart-page-unique">
+      <h2 className="add-to-cart-heading">Items in Your Cart</h2>
 
       {loading ? (
         <p>Loading...</p>
       ) : cartItems.length > 0 ? (
-        <Row className="cart-items">
-          {cartItems.map((item) => (
-            <Col md={4} key={item.id} className="mb-4">
-              <Card className="cart-item-card">
-                <Card.Img variant="top" src={item.image || suggestedimg} alt={item.name} />
-                <Card.Body>
-                  <Card.Title>{item.product_id.name}</Card.Title>
-                  <Card.Text>
-                    <strong>Price:</strong> ${item.product_id.price} <br />
-                    <strong>Quantity:</strong> {item.quantity}
-                  </Card.Text>
-                  <div className="quantity-control d-flex align-items-center">
-                    <Button
-                      onClick={() =>
-                        setCartItems(
-                          cartItems.map((cartItem) =>
-                            cartItem.product_id === item.product_id && cartItem.quantity > 1
-                              ? { ...cartItem, quantity: cartItem.quantity - 1 }
-                              : cartItem
-                          )
-                        )
-                      }
-                      variant="outline-secondary"
-                    >
-                      -
-                    </Button>
-                    <span className="quantity mx-2">{item.quantity}</span>
-                    <Button
-                      onClick={() =>
-                        setCartItems(
-                          cartItems.map((cartItem) =>
-                            cartItem.product_id === item.product_id
-                              ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                              : cartItem
-                          )
-                        )
-                      }
-                      variant="outline-secondary"
-                    >
-                      +
-                    </Button>
-                  </div>
-                  <Button
-                    onClick={() => setCartItems(cartItems.filter((cartItem) => cartItem.product_id !== item.product_id))}
-                    variant="danger"
-                    className="mt-2"
-                  >
-                    Remove
-                  </Button>
-                </Card.Body>
-              </Card>
+        <>
+          <Row className="cart-items-container">
+            <Col md={8}>
+              {cartItems.map((item) => (
+                <Card className="cart-item-card-unique" key={item.id}>
+                  <Row className="align-items-center">
+                    <Col md={2}>
+                      <Card.Img src={item.image} alt={item.name} />
+                    </Col>
+                    <Col md={7}>
+                      <Card.Body>
+                        <Card.Title>{item.product_id.name}</Card.Title>
+                        <Card.Text>
+                          <strong>Price:</strong> ${item.product_id.price} <br />
+                          <strong>Quantity:</strong> {item.quantity}
+                        </Card.Text>
+                      </Card.Body>
+                    </Col>
+                    <Col md={3}>
+                      <div className="quantity-control-unique d-flex align-items-center justify-content-between">
+                        <Button
+                          onClick={() =>
+                            setCartItems(
+                              cartItems.map((cartItem) =>
+                                cartItem.product_id === item.product_id && cartItem.quantity > 1
+                                  ? { ...cartItem, quantity: cartItem.quantity - 1 }
+                                  : cartItem
+                              )
+                            )
+                          }
+                          variant="outline-secondary"
+                        >
+                          -
+                        </Button>
+                        <span className="quantity-display">{item.quantity}</span>
+                        <Button
+                          onClick={() =>
+                            setCartItems(
+                              cartItems.map((cartItem) =>
+                                cartItem.product_id === item.product_id
+                                  ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                                  : cartItem
+                              )
+                            )
+                          }
+                          variant="outline-secondary"
+                        >
+                          +
+                        </Button>
+                        <Button
+                          onClick={() => setCartItems(cartItems.filter((cartItem) => cartItem.product_id !== item.product_id))}
+                          variant="danger"
+                          className="remove-item-btn-unique"
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    </Col>
+                  </Row>
+                </Card>
+              ))}
+              <Button
+                className="place-order-btn-unique mt-4"
+                onClick={() => navigate('/placeorder')}
+                variant="primary"
+              >
+                Place Order
+              </Button>
             </Col>
-          ))}
-        </Row>
+
+            <Col md={4}>
+              <div className="price-details-card-unique">
+                <h3>Price Details</h3>
+                <p>
+                  <strong>Price ({totalItems} items):</strong> ${totalPrice}
+                </p>
+                <p>
+                  <strong>Delivery Charges:</strong> ${deliveryCharge}
+                </p>
+                <p>
+                  <strong>Total Payable:</strong> <b>${totalPayable}</b>
+                </p>
+                <p>
+                  <strong>You Saved:</strong> ${totalDiscount}
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </>
       ) : (
         <p>Your cart is empty.</p>
       )}
-
-      <h3 className="mt-5">Suggested Products for You</h3>
-      <Row className="suggested-products mt-3">
-        {suggestedProducts.map((product) => (
-          <Col md={4} key={product.id} className="mb-4">
-            <Card className="suggested-product-card">
-              <Card.Img variant="top" src={product.image} />
-              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>${product.price}</Card.Text>
-                <Button variant="primary" onClick={() => handleAddToCart(product)} disabled={loading}>
-                  {loading ? 'Adding...' : 'Add to Cart'}
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
     </Container>
   );
 };
 
-export default AddToCart;
+export default AddToCartPage;

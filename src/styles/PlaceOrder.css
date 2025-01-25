@@ -1,0 +1,119 @@
+/* Container Styling */
+.placeOrder__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Carousel Box */
+.placeOrder__carousel {
+  width: 85%;
+  max-width: 800px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+}
+
+/* Steps */
+.placeOrder__step {
+  display: none;
+}
+
+.placeOrder__step.placeOrder__activeStep {
+  display: block;
+}
+
+/* Heading */
+.placeOrder__heading {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Address Form and Saved Address */
+.placeOrder__addressForm {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.placeOrder__addressInput {
+  padding: 10px;
+  width: 80%;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.placeOrder__savedAddress {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.placeOrder__icon {
+  cursor: pointer;
+  font-size: 1.8rem;
+  margin-left: 10px;
+  color: #0288d1;
+}
+
+.placeOrder__icon:hover {
+  color: #0277bd;
+}
+
+/* Buttons */
+.placeOrder__button {
+  background-color: #0288d1;
+  color: #ffffff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px auto;
+  display: block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.placeOrder__button:hover {
+  background-color: #0277bd;
+}
+
+.placeOrder__button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.placeOrder__button--secondary {
+  background-color: #ff9800;
+}
+
+.placeOrder__button--secondary:hover {
+  background-color: #fb8c00;
+}
+
+.placeOrder__button--save {
+  background-color: #388e3c;
+  font-size: 1rem;
+}
+
+.placeOrder__button--save:hover {
+  background-color: #2c6b2d;
+}
+
+.placeOrder__button--location {
+  background-color: #ffa000;
+}
+
+.placeOrder__button--location:hover {
+  background-color: #ff8f00;
+}
