@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
-import '../styles/AddToCart.css'; // Basic styling
+import '../styles/AddToCart.css';
 import suggestedimg from '../images/seeds.jpeg';
 
 const suggestedProducts = [
@@ -10,10 +10,30 @@ const suggestedProducts = [
   { id: 3, name: "Suggested Product C", image: suggestedimg, price: 140 },
 ];
 
-const AddToCart = ({ cartItems, setCartItems }) => {
+const AddToCart = () => {
+  const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Function to handle adding items to the cart
+  // Fetch cart items on component mount
+  useEffect(() => {
+    fetchCartItems();
+  }, []);
+
+  const fetchCartItems = async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem('authToken');
+      const response = await axios.get('http://localhost:5050/cart', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setCartItems(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching cart items:', error.message);
+      setLoading(false);
+    }
+  };
+
   const handleAddToCart = async (product) => {
     const user_id = "12345"; // Replace with actual user ID
     const cartItem = {
@@ -25,24 +45,27 @@ const AddToCart = ({ cartItems, setCartItems }) => {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:5050/cart', cartItem);
-      setLoading(false);
+      const token = localStorage.getItem('authToken');
+      const response = await axios.post('http://localhost:5050/cart', cartItem, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-      // If the product is successfully added on the backend, update the frontend cart
       const addedProduct = response.data;
-      const existingItem = cartItems.find((item) => item.id === addedProduct.product_id);
+      const existingItem = cartItems.find((item) => item.product_id === addedProduct.product_id);
 
       if (existingItem) {
         setCartItems(
           cartItems.map((item) =>
-            item.id === addedProduct.product_id
+            item.product_id === addedProduct.product_id
               ? { ...item, quantity: item.quantity + 1 }
               : item
           )
         );
       } else {
-        setCartItems([...cartItems, { ...product, quantity: 1 }]);
+        setCartItems([...cartItems, { ...addedProduct, name: product.name, image: product.image, price: product.price }]);
       }
+
+      setLoading(false);
     } catch (error) {
       console.error('Error adding to cart:', error.message);
       setLoading(false);
@@ -51,68 +74,70 @@ const AddToCart = ({ cartItems, setCartItems }) => {
 
   return (
     <Container className="add-to-cart-page">
-      <h2 className="mt-4">Items in your cart</h2>
+      <h2 className="mt-4">Items in Your Cart</h2>
 
-      {/* Cart Items */}
-      {cartItems.length > 0 ? (
-        cartItems.map((item) => (
-          <Row key={item.id} className="cart-item my-3">
-            <Col md={3} className="cart-item-image">
-              <img src={item.image} alt={item.name} className="product-img" />
+      {loading ? (
+        <p>Loading...</p>
+      ) : cartItems.length > 0 ? (
+        <Row className="cart-items">
+          {cartItems.map((item) => (
+            <Col md={4} key={item.id} className="mb-4">
+              <Card className="cart-item-card">
+                <Card.Img variant="top" src={item.image || suggestedimg} alt={item.name} />
+                <Card.Body>
+                  <Card.Title>{item.product_id.name}</Card.Title>
+                  <Card.Text>
+                    <strong>Price:</strong> ${item.product_id.price} <br />
+                    <strong>Quantity:</strong> {item.quantity}
+                  </Card.Text>
+                  <div className="quantity-control d-flex align-items-center">
+                    <Button
+                      onClick={() =>
+                        setCartItems(
+                          cartItems.map((cartItem) =>
+                            cartItem.product_id === item.product_id && cartItem.quantity > 1
+                              ? { ...cartItem, quantity: cartItem.quantity - 1 }
+                              : cartItem
+                          )
+                        )
+                      }
+                      variant="outline-secondary"
+                    >
+                      -
+                    </Button>
+                    <span className="quantity mx-2">{item.quantity}</span>
+                    <Button
+                      onClick={() =>
+                        setCartItems(
+                          cartItems.map((cartItem) =>
+                            cartItem.product_id === item.product_id
+                              ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                              : cartItem
+                          )
+                        )
+                      }
+                      variant="outline-secondary"
+                    >
+                      +
+                    </Button>
+                  </div>
+                  <Button
+                    onClick={() => setCartItems(cartItems.filter((cartItem) => cartItem.product_id !== item.product_id))}
+                    variant="danger"
+                    className="mt-2"
+                  >
+                    Remove
+                  </Button>
+                </Card.Body>
+              </Card>
             </Col>
-            <Col md={6} className="cart-item-info">
-              <h5>{item.name}</h5>
-              <p>Price: ${item.price}</p>
-              <div className="quantity-control">
-                <Button
-                  onClick={() =>
-                    setCartItems(
-                      cartItems.map((cartItem) =>
-                        cartItem.id === item.id && cartItem.quantity > 1
-                          ? { ...cartItem, quantity: cartItem.quantity - 1 }
-                          : cartItem
-                      )
-                    )
-                  }
-                  variant="outline-secondary"
-                >
-                  -
-                </Button>
-                <span className="quantity">{item.quantity}</span>
-                <Button
-                  onClick={() =>
-                    setCartItems(
-                      cartItems.map((cartItem) =>
-                        cartItem.id === item.id
-                          ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                          : cartItem
-                      )
-                    )
-                  }
-                  variant="outline-secondary"
-                >
-                  +
-                </Button>
-              </div>
-            </Col>
-            <Col md={3} className="cart-item-actions">
-              <Button
-                onClick={() => setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id))}
-                variant="danger"
-                className="me-2"
-              >
-                Remove
-              </Button>
-              <Button variant="success">Buy Now</Button>
-            </Col>
-          </Row>
-        ))
+          ))}
+        </Row>
       ) : (
         <p>Your cart is empty.</p>
       )}
 
-      {/* Suggested Products */}
-      <h3 className="mt-5">Suggested products for you</h3>
+      <h3 className="mt-5">Suggested Products for You</h3>
       <Row className="suggested-products mt-3">
         {suggestedProducts.map((product) => (
           <Col md={4} key={product.id} className="mb-4">
